@@ -5,9 +5,8 @@
 #include "palindrome.h"
 
 int main(int argc, char *argv[]) {
-  char *line;
+  char *line, *pal;
   int size;
-  char *pal;
   
   size = 100;
   line = (char*) calloc (size + 1, sizeof(char));

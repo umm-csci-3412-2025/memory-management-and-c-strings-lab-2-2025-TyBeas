@@ -33,7 +33,7 @@ TEST(Disemvowel, HandlePunctuation) {
 }
 
 TEST(Disemvowel, HandleLongString) {
-  char *str;
+  char *str, *result;
   int size;
   int i;
 
