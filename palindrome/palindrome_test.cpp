@@ -3,13 +3,13 @@
 #include "palindrome.h"
 
 void is_palindrome(char const *str) {
-  char* pal = palindrome(str);
+  char* ispal = palindrome(str);
   ASSERT_STREQ(palindrome(str), "Yes");
   free(pal);
 }
 
 void not_palindrome(char const *str) {
-  char* pal = palindrome(str);
+  char* notpal = palindrome(str);
   ASSERT_STREQ(palindrome(str), "No");
   free(pal);
 }
