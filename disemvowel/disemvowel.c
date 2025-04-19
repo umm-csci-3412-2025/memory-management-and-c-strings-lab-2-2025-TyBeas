@@ -1,30 +1,39 @@
 #include <string.h>
-#include <stdbool.h>
 #include <stdlib.h>
+
 #include "disemvowel.h"
 
-const char* VOWELS = "aeiouAEIOU";
-
-bool notVowel(char c) {
-  for (int i = 0; i < 10; i++) {
-    if (c == VOWELS[i]) {
-      return false;
+int vowelCounter(char *str){
+  int i, numVowels = 0;
+  char *vowels = (char*)calloc(11, sizeof(char));
+  strcpy(vowels, "aeiouAEIOU\0");
+  int len = strlen(str);
+  for (i = 0; i < len; i++) {
+    if (strchr(vowels, str[i]) != NULL) {
+      numVowels++;
     }
   }
-  return true;
+  free(vowels);
+  return numVowels;
 }
 
 char *disemvowel(char *str) {
-  int notVowelCount = 0;
-  int length = strlen(str);
-  char* disemvowel = (char*) calloc(length + 1, sizeof(char));
-  
-  for (int i = 0; i < length; i++) {
-    if (notVowel(str[i])) {
-      disemvowel[notVowelCount] = str[i];
-      notVowelCount++;
+  int length, vowels, i, j;
+  char *results;
+  char *vowels = (char*)calloc(11, sizeof(char));
+  strcpy(vowels, "aeiouAEIOU\0");
+
+  vowels = vowelCounter(str);
+  length = strlen(str);
+  results = (char*)calloc(length - vowels + 1, sizeof(char));
+
+  for (i = 0; i < length; i++) {
+    if (strchr(vowels, str[i]) == NULL) {
+      results[j] = str[i];
+      j++;
     }
   }
-  disemvowel[notVowelCount] = '\0';
-  return disemvowel;
+  results[length - vowels] = '\0';
+  free(vowels);
+  return results;
 }

@@ -9,11 +9,10 @@ int main(int argc, char *argv[]) {
   
   size = 100;
   line = (char*) malloc (size + 1);
+  char *word;
 
   while (getline(&line, &size, stdin) > 0) {
-    char* result = disemvowel(line);
-    printf("%s\n", result);
-    free(result);
+    printf("%s\n", word = disemvowel(line));
   }
-  free(line);
+  free(word);
 }
