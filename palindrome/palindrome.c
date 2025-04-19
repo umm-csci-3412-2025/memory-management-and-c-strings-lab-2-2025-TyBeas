@@ -32,6 +32,7 @@ char *palindrome(char const *str) {
     }
     ++i;
   }
+  free(rev);
 
   if (result) {
     answer = (char*) calloc(4, sizeof(char));
@@ -45,7 +46,5 @@ char *palindrome(char const *str) {
     answer[1] = 'o';
     answer[2] = '\0';
   }
-
-  free((char*) rev);
   return answer;
 }

@@ -3,15 +3,15 @@
 #include "palindrome.h"
 
 void is_palindrome(char const *str) {
-  char* pal = palindrome(str);
-  ASSERT_STREQ(palindrome(str), "Yes");
-  free(pal);
+  char *pd = palindrome(str);
+  ASSERT_STREQ(pd, "Yes");
+  free(pd);
 }
 
 void not_palindrome(char const *str) {
-  char* pal = palindrome(str);
-  ASSERT_STREQ(palindrome(str), "No");
-  free(pal);
+  char *pd = palindrome(str);
+  ASSERT_STREQ(pd, "No");
+  free(pd);
 }
 
 TEST(Palindrome, HandlesEmptyString) {

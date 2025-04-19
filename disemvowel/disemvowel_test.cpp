@@ -2,6 +2,8 @@
 
 #include "disemvowel.h"
 
+char *word;
+
 TEST(Disemvowel, HandleEmptyString) {
   ASSERT_STREQ("", word = disemvowel((char*) ""));
   free(word);

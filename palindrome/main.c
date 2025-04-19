@@ -13,9 +13,10 @@ int main(int argc, char *argv[]) {
 
   while (fgets(line, size, stdin) != NULL) {
     line[strcspn(line, "\n")] = '\0';
-    char *result = palindrome(line);
-    printf("Is the string <%s> a palindrome? %s\n", line, palindrome(line));
-    free((char*) result);
+    char *pd;
+    pd = palindrome(line);
+    printf("Is the string <%s> a palindrome? %s\n", line, pd);
+    free(pd);
   }
 
   free(line);
