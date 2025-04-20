@@ -23,7 +23,7 @@ char *disemvowel(char *str) {
   char *vowels = (char*)calloc(11, sizeof(char));
   strcpy(vowels, "aeiouAEIOU\0");
 
-  vowels = vowelCounter(str);
+  vow = vowelCounter(str);
   length = strlen(str);
   results = (char*)calloc(length - vow + 1, sizeof(char));
 
