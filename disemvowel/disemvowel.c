@@ -4,28 +4,28 @@
 #include "disemvowel.h"
 
 int vowelCounter(char *str){
-  int i, numVowels = 0;
-  char *vowels = (char*)calloc(11, sizeof(char));
+    int i, numVowels = 0;
+    char *vowels = (char*)calloc(11, sizeof(char));
   strcpy(vowels, "aeiouAEIOU\0");
   int len = strlen(str);
-  for (i = 0; i < len; i++) {
-    if (strchr(vowels, str[i]) != NULL) {
-      numVowels++;
-    }
-  }
+      for (i = 0; i < len; i++) {
+            if (strchr(vowels, str[i]) != NULL) {
+                    ++numVowels;
+            }
+          }
   free(vowels);
   return numVowels;
 }
 
 char *disemvowel(char *str) {
-  int length, vowels, i, j;
+  int length, vow, i, j;
   char *results;
-  char* vowels = (char*)calloc(11, sizeof(char));
+  char *vowels = (char*)calloc(11, sizeof(char));
   strcpy(vowels, "aeiouAEIOU\0");
 
   vowels = vowelCounter(str);
   length = strlen(str);
-  results = (char*)calloc(length - vowels + 1, sizeof(char));
+  results = (char*)calloc(length - vow + 1, sizeof(char));
 
   for (i = 0; i < length; i++) {
     if (strchr(vowels, str[i]) == NULL) {
@@ -33,7 +33,7 @@ char *disemvowel(char *str) {
       j++;
     }
   }
-  results[length - vowels] = '\0';
+  results[length - vow] = '\0';
   free(vowels);
   return results;
 }
