@@ -44,8 +44,8 @@ TEST(Disemvowel, HandleLongString) {
   }
   str[size-1] = '\0';
   
-  char* result = disemvowel(str);
-  free(word)
+  char* word = disemvowel(str);
+  free(word);
   free(str);
 }
 
