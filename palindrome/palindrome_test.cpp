@@ -4,13 +4,13 @@
 
 void is_palindrome(char const *str) {
   char *pd = palindrome(str);
-  ASSERT_STREQ(pd, "Yes");
+  ASSERT_STREQ("Yes", pd);
   free(pd);
 }
 
 void not_palindrome(char const *str) {
   char *pd = palindrome(str);
-  ASSERT_STREQ(pd, "No");
+  ASSERT_STREQ("No", pd);
   free(pd);
 }
 

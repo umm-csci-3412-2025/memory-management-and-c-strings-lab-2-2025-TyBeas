@@ -5,47 +5,24 @@
 #include "palindrome.h"
 
 char *str_reverse(char const *str) {
-  int length, i;
-  char *result;
-
-  length = strlen(str);
-  result = (char*) calloc(length+1, sizeof(char));
-  for (i=0; i<length; ++i) {
-    result[i] = str[length-i-1];
-  }
-  result[length] = '\0';
+  int length = strlen(str);
+  char *result = (char *)calloc(length + 1, sizeof(char));
   
+  if (result == NULL) return NULL;
+
+  for (int i = 0; i < length; ++i) {
+    result[i] = str[length - i - 1];
+  }
+
   return result;
 }
 
 char *palindrome(char const *str) {
-  char *rev;
-  int i;
-  bool result = true;
-  char *answer;
+  char *rev = str_reverse(str);
+  if (rev == NULL) return NULL;
 
-
-  rev = str_reverse(str);
-  i = 0;
-  while (result && str[i]) {
-    if (str[i] != rev[i]) {
-      result = false;
-    }
-    ++i;
-  }
+  bool is_palindrome = (strcmp(str, rev) == 0);
   free(rev);
 
-  if (result) {
-    answer = (char*) calloc(4, sizeof(char));
-    answer[0] = 'Y';
-    answer[1] = 'e';
-    answer[2] = 's';
-    answer[3] = '\0';
-  } else {
-    answer = (char*) calloc(3, sizeof(char));
-    answer[0] = 'N';
-    answer[1] = 'o';
-    answer[2] = '\0';
-  }
-  return answer;
+  return strdup(is_palindrome ? "Yes" : "No");
 }

@@ -1,50 +1,56 @@
 #include <gtest/gtest.h>
+#include <stdlib.h>
 
 #include "disemvowel.h"
 
-char *word;
-
 TEST(Disemvowel, HandleEmptyString) {
-  ASSERT_STREQ("", word = disemvowel((char*) ""));
+  char *word = disemvowel((char*) "");
+  ASSERT_STREQ("", word);
   free(word);
 }
 
 TEST(Disemvowel, HandleNoVowels) {
-  ASSERT_STREQ("pqrst", word = disemvowel((char*) "pqrst"));
+  char *word = disemvowel((char*) "pqrst");
+  ASSERT_STREQ("pqrst", word);
   free(word);
 }
 
 TEST(Disemvowel, HandleOnlyVowels) {
-  ASSERT_STREQ("", word = disemvowel((char*) "aeiouAEIOUOIEAuoiea"));
+  char *word = disemvowel((char*) "aeiouAEIOUOIEAuoiea");
+  ASSERT_STREQ("", word);
   free(word);
 }
 
 TEST(Disemvowel, HandleMorrisMinnesota) {
-  ASSERT_STREQ("Mrrs, Mnnst", word = disemvowel((char*) "Morris, Minnesota"));
+  char *word = disemvowel((char*) "Morris, Minnesota");
+  ASSERT_STREQ("Mrrs, Mnnst", word);
   free(word);
 }
 
 TEST(Disemvowel, HandlePunctuation) {
-  ASSERT_STREQ("n (nxplnd) lphnt!", word = disemvowel((char*) "n (an explanation) elephant!"));
+  char *word = disemvowel((char*) "n (an explanation) elephant!");
+  ASSERT_STREQ("n (nxplnd) lphnt!", word);
   free(word);
 }
 
 TEST(Disemvowel, HandleLongString) {
   char *str;
-  int size;
+  char *word;
+  int size = 50000;
   int i;
 
-  size = 50000;
   str = (char*) calloc(size, sizeof(char));
   str[0] = 'x';
   str[1] = 'y';
   str[2] = 'z';
-  for (i = 3; i < size-1; ++i) {
-    str[i] = 'a';
+  for (i = 3; i < size - 1; ++i) {
+    str[i] = 'a';  // fill rest with vowels
   }
-  str[size-1] = '\0';
-  
-  ASSERT_STREQ("xyz", word = disemvowel(str));
+  str[size - 1] = '\0';
+
+  word = disemvowel(str);
+  ASSERT_STREQ("xyz", word);
+
   free(word);
   free(str);
 }
