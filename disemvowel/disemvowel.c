@@ -18,7 +18,7 @@ int vowelCounter(char *str){
 }
 
 char *disemvowel(char *str) {
-  int length, vow, i, j;
+  int length, vow, i, j=0;
   char *results;
   char *vowels = (char*)calloc(11, sizeof(char));
   strcpy(vowels, "aeiouAEIOU\0");
@@ -27,10 +27,10 @@ char *disemvowel(char *str) {
   length = strlen(str);
   results = (char*)calloc(length - vow + 1, sizeof(char));
 
-  for (i = 0; i < length; i++) {
+  for (i = 0; i < length; ++i) {
     if (strchr(vowels, str[i]) == NULL) {
       results[j] = str[i];
-      j++;
+      ++j;
     }
   }
   results[length - vow] = '\0';

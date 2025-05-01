@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
 
   while (getline(&line, &size, stdin) > 0) {
     printf("%s\n", word = disemvowel(line));
+
+    free(word);
   }
-  free(word);
 }

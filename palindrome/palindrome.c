@@ -5,15 +5,15 @@
 #include "palindrome.h"
 
 char *str_reverse(char const *str) {
-  int len, i;
+  int length, i;
   char *result;
 
-  len = strlen(str);
-  result = (char*) calloc(len+1, sizeof(char));
-  for (i=0; i<len; ++i) {
-    result[i] = str[len-i-1];
+  length = strlen(str);
+  result = (char*) calloc(length+1, sizeof(char));
+  for (i=0; i<length; ++i) {
+    result[i] = str[length-i-1];
   }
-  result[len] = '\0';
+  result[length] = '\0';
   
   return result;
 }
@@ -23,6 +23,7 @@ char *palindrome(char const *str) {
   int i;
   bool result = true;
   char *answer;
+
 
   rev = str_reverse(str);
   i = 0;
